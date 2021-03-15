@@ -5,11 +5,11 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
    name='Spurwing',
-   version='1.0.0',
+   version='1.0.1',
    author='Ilya Nevolin',
    author_email='ilya@spurwing.io',
-   packages=['spurwing', 'spurwing.tests'],
-   url='',
+   packages=['spurwing'],
+   url='https://github.com/Spurwing/Spurwing-API-Python-Library/',
    license='MIT License (MIT)',
    description='Python Library for Spurwing API',
    long_description=long_description,
