@@ -16,31 +16,33 @@ def runner(func):
 def test_1():
   tz = "Europe/Brussels";
 
-  A = sp.get_appointment_types(PID, True)
+  A = sp.get_appointment_types(PID)
   log(A)
   assert len(A) == 3
 
-  B = sp.get_days_available(PID, A[0]['id'], dateNow(), tz, False)
+  appointment_type_id=A[0]['id']
+
+  B = sp.get_days_available(PID, appointment_type_id)
   log(B)
   assert len(B['days_available']) >= 1
 
-  C = sp.get_slots_available(PID, A[0]['id'], dateNow(), dateTomorrow(), False)
+  C = sp.get_slots_available(PID, appointment_type_id, dateNow(), dateTomorrow())
   log(C)
   assert len(C['slots_available']) >= 10
   slot = C['slots_available'][5]['date']
 
-  D = sp.complete_booking(PID, A[0]['id'], slot, tz, 'Ilya', 'Nevo', 'ilya2@nevolin.be', '111-111-7777', 'My Contact Type')
+  D = sp.complete_booking(PID, appointment_type_id, 'ilya2@nevolin.be', 'Ilya', 'Nevo', date=slot, contact_type='My Contact Type')
   log(D)
   assert 'appointment' in D
 
-  E = sp.list_appointments(KEY, 1000, 0, PID)
+  E = sp.list_appointments(KEY, 1000, 0)
   log(E)
   assert 'data' in E
   assert 'appointments' in E['data']
   assert E['data']['appointmentsCount'] >= 1
 
   apid = D['appointment']['id']
-  F = sp.delete_appointment(apid, KEY)
+  F = sp.delete_appointment(KEY, apid)
   log(F)
   assert 'data' in F
   assert 'appointment' in F['data']
@@ -50,7 +52,7 @@ def test_1():
   
 @runner
 def test_2():
-  A = sp.list_appointments(KEY, 1000, 0, PID)
+  A = sp.list_appointments(KEY, 1000, 0)
   log(A)
   assert len(A) == 3
   assert 'data' in A

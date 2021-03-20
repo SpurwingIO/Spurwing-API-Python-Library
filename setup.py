@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
    name='Spurwing',
-   version='1.0.1',
+   version='1.0.4',
    author='Ilya Nevolin',
    author_email='ilya@spurwing.io',
    packages=['spurwing'],
