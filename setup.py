@@ -17,7 +17,7 @@ class build_py(build_py_orig):
 
 setup(
    name='Spurwing',
-   version='1.0.4',
+   version='1.0.5',
    author='Ilya Nevolin',
    author_email='ilya@spurwing.io',
    packages=find_packages(),
