@@ -65,6 +65,6 @@ def HTTP(method, endpoint, params=None, data=None, headers=None):
   elif method == 'POST':   resp = requests.post(url,   params=params, headers=headers, data=data,)
   elif method == 'PUT':    resp = requests.put(url,    params=params, headers=headers, data=data,)
   elif method == 'DELETE': resp = requests.delete(url, params=params, headers=headers)
-  
+
   if resp.status_code == 200: return resp.json()
   else: raise Exception({'status':resp.status, 'text':resp.statusText, 'url':url})

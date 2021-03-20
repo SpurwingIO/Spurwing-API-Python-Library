@@ -14,8 +14,6 @@ def runner(func):
 
 @runner
 def test_1():
-  tz = "Europe/Brussels";
-
   A = sp.get_appointment_types(PID)
   log(A)
   assert len(A) == 3
