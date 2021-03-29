@@ -46,7 +46,15 @@ For additional demos and use cases have a look under `spurwing/test_api.py`.
 Spurwing's REST API Reference and Docs: https://docs.spurwing.io/
 
 ## Testing
-To run our predefined unit tests use the `spurwing/test_api.py` script. You also need to rename the `config.sample.py` file to `config.py` and enter your credentials (provider id and api key). You can optionally use PyTest or another framework.
+To run our predefined unit tests use the `spurwing/test_api.py` script.
+
+You also need to provide the API credentials. You can use environment variables, or rename the `config.sample.py` file to `config.py` and enter your credentials (provider id and api key). Afterwards you can run the `npm tests` command. You can optionally use PyTest or another framework.
+
+Environment variables:
+```
+SPURWING_PID=change_me
+SPURWING_KEY=change_me
+```
 
 ## Support
 - For public issues and bugs please use the GitHub Issues Page.
