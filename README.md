@@ -27,7 +27,7 @@ from spurwing import Client as sp
 PID = 'your_provider_id';
 KEY = 'your_api_key';
 
-A = sp.list_appointments(KEY, 1000, 0, PID)
+A = sp.list_appointments(KEY)
 
 ```
 ## Documentation
