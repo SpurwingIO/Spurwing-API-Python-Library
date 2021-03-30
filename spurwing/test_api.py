@@ -1,5 +1,12 @@
-from config import KEY, PID
+import os
 import Client as sp
+
+try:
+  from config import KEY, PID
+except:
+ KEY = os.environ['SPURWING_KEY']
+ PID = os.environ['SPURWING_PID']
+assert len(KEY) and len(PID)
 
 def runner(func):
   def wrapper():
