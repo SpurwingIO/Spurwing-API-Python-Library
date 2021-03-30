@@ -23,7 +23,7 @@ def runner(func):
 def test_1():
   A = sp.get_appointment_types(PID)
   log(A)
-  assert len(A) >= 3
+  assert len(A) >= 1
 
   appointment_type_id=A[0]['id']
 
@@ -59,7 +59,7 @@ def test_1():
 def test_2():
   A = sp.list_appointments(KEY, 1000, 0)
   log(A)
-  assert len(A) == 3
+  assert len(A) >= 1
   assert 'data' in A
   assert 'appointments' in A['data']
 
