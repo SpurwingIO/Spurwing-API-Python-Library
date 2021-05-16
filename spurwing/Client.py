@@ -43,6 +43,14 @@ def complete_booking(provider_id, appointment_type_id, email, first_name, last_n
       'video_chat_url': video_chat_url,
       'contact_type': contact_type })
 
+def create_group_appointment(authorization, provider_id, appointment_type_id, datetime):
+  return HTTP('POST', 'appointments',
+    data={
+      'provider_id':provider_id,
+      'appointment_type_id': appointment_type_id,
+      'datetime': datetime },
+    headers={ 'authorization': 'Bearer ' + authorization })
+
 def list_appointments(authorization, page_size, offset, appointment_category=None, load_attendees=None, load_providers=None, load_appointment_type=None):
   return HTTP('GET', 'appointments',
     params={

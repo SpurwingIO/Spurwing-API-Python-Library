@@ -63,6 +63,37 @@ def test_2():
   assert 'data' in A
   assert 'appointments' in A['data']
 
+@runner
+def test_3():
+  A = sp.get_appointment_types(PID)
+  log(A)
+  assert len(A) >= 1
+
+  appointment_type_id=A[3]['id']
+
+  B = sp.create_group_appointment(KEY, PID, appointment_type_id, dateTomorrow())
+  log(B)
+  assert 'data' in B
+  assert 'appointment' in B['data']
+  assert 'id' in B['data']['appointment']
+  apid = B['data']['appointment']['id']
+
+  def add_attendee(fn, ln, email):
+    D = sp.complete_booking(PID, appointment_type_id, email, fn, ln, appointment_id=apid)
+    log(D)
+    assert 'appointment' in D
+  add_attendee('john', 'G', 'john@nevolin.be')
+  add_attendee('bill', 'H', 'bill@nevolin.be')
+
+  E = sp.list_appointments(KEY, 1000, 0)
+  log(E)
+
+  F = sp.delete_appointment(KEY, apid)
+  log(F)
+  assert 'data' in F
+  assert 'appointment' in F['data']
+  assert F['data']['appointment']['id'] == apid
+  assert len(F['errors']) == 0
 
 from datetime import date, timedelta
 def dateNow():
