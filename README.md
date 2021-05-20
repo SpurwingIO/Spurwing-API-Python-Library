@@ -4,6 +4,8 @@ Lightweight Python library for Spurwing's API.
 
 Spurwing's API makes it easy to add robust scheduling and booking to your application. We power millions of appointment bookings for thousands of companies, from marketplaces to SaaS & healthcare. 
 
+![image](https://user-images.githubusercontent.com/9488406/119051255-3db58680-b9c3-11eb-9452-e50ed0d7c21e.png)
+
 ## Account
 To use this API you need to obtain API credentials by signin up here: https://spurwing.io/
 
